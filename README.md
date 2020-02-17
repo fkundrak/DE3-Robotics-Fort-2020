@@ -24,18 +24,22 @@ Here are the tasks:
 
 #### Phase 2: [Building a Fort with Baxter](http://google.com)
 [Section 1](http://google.com)
+
 [Section 2](http://google.com)
 
 #### Phase 3: [Building a Fort with Baxter with Two Arms](http://google.com)
 [Section 1](http://google.com)
+
 [Section 2](http://google.com)
 
 #### Phase 4: [Building a Fort with Baxter using Image Recognition](http://google.com)
 [Section 1](http://google.com)
+
 [Section 2](http://google.com)
 
 ### 3 Additional Research
 [Section 1](http://google.com)
+
 [Section 2](http://google.com)
 
 ## The Team
