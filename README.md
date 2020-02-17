@@ -19,6 +19,7 @@ Here are the tasks:
 
 #### Phase 1: [Building a Fort in Gazebo](http://google.com)
 [Section 1](http://google.com)
+
 [Section 2](http://google.com)
 
 #### Phase 2: [Building a Fort with Baxter](http://google.com)
