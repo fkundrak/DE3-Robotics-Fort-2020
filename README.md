@@ -1,5 +1,3 @@
-Welcome to the our team's wiki!
-
 # DE3-Robotics-Fort-2020
 Building a Fort using De Niro
 ## Introduction 
