@@ -1,11 +1,12 @@
 # DE3-Robotics-Fort-2020
 Building a Fort using De Niro
-## Introduction 
+## Introduction
+Our team decided to build a fort using De Niro, and we split this project into the following phases: 
 Here are the tasks:
-1. one
-2. two
-3. three
-4. four
+1. Building a Fort in Gazebo
+2. Building a Fort with Baxter
+3. Building a Fort with Baxter with Two Arms
+4. Building a Fort with Baxter using Image Recognition
 
 ![Image of the Fort](https://raw.githubusercontent.com/fkundrak/DE3-Robotics-Fort-2020/master/Fort%202.jpg)
 
