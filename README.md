@@ -1,7 +1,7 @@
 # DE3-Robotics-Fort-2020
-Building a Fort using De Niro
+Building a Fort using DE NIRO
 ## Introduction
-Our team decided to build a fort using De Niro, and we split this project into the following phases: 
+Our team decided to build a fort using DE NIRO, and we split this project into the following phases: 
 Here are the tasks:
 1. Building a Fort in Gazebo
 2. Building a Fort with Baxter
@@ -18,7 +18,15 @@ Here are the tasks:
 ### 2 Project Phases
 
 #### 2.1 Phase 1: [Building a Fort in Gazebo](https://github.com/fkundrak/DE3-Robotics-Fort-2020/wiki/2.1-Phase-1:-Building-a-Fort-in-Gazebo)
-2.1.1 [Section 1](https://github.com/fkundrak/DE3-Robotics-Fort-2020/wiki/2.1.1-Section-1)
+2.1.1 [Pick and Place](https://github.com/fkundrak/DE3-Robotics-Fort-2020/wiki/2.1.1-Pick-and-Place)
+
+2.1.2 [Spawning Models](https://github.com/fkundrak/DE3-Robotics-Fort-2020/wiki/2.1.2-Spawning-Models)
+
+2.1.3 [Gripper Settings](https://github.com/fkundrak/DE3-Robotics-Fort-2020/wiki/2.1.3-Gripper-Settings)
+
+2.1.4 [Brick Physics](https://github.com/fkundrak/DE3-Robotics-Fort-2020/wiki/2.1.4-Brick-Physics)
+
+2.1.5 [DE NIRO Physics](https://github.com/fkundrak/DE3-Robotics-Fort-2020/wiki/2.1.5-DE-NIRO-Physics)
 
 #### 2.2 Phase 2: [Building a Fort with Baxter](https://github.com/fkundrak/DE3-Robotics-Fort-2020/wiki/2.2-Phase-2:-Building-a-Fort-with-Baxter)
 2.2.1 [Section 1](https://github.com/fkundrak/DE3-Robotics-Fort-2020/wiki/2.2.1-Section-1)
