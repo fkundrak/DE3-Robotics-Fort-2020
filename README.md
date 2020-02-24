@@ -1,5 +1,5 @@
 # DE3-Robotics-Fort-2020
-Building a Fort using DE NIRO (Baxter robot belonging to the Dyson School of Design Engineering)
+Building a Fort using DE NIRO (a Baxter robot belonging to the Dyson School of Design Engineering).
 ## Introduction
 Our team decided to build a fort using DE NIRO, and we split this project into the following phases: 
 1. Building a Fort in Gazebo
