@@ -2,10 +2,11 @@
 Building a Fort using DE NIRO (a Baxter robot belonging to the Dyson School of Design Engineering).
 ## Introduction
 Our team decided to build a fort using DE NIRO, and we split this project into the following phases: 
-1. Building a Fort in Gazebo
-2. Building a Fort with Baxter
+1. Building a Fort in Gazebo with One Arm
+2. Building a Fort with Baxter with One Arm
+3. Building a Fort in Gazebo with Two Arms
 3. Building a Fort with Baxter with Two Arms
-4. Building a Fort with Baxter using Image Recognition
+4. Gripper Checking
 
 ![Image of the Fort](https://raw.githubusercontent.com/fkundrak/DE3-Robotics-Fort-2020/master/Fort%202.jpg)
 
@@ -16,7 +17,7 @@ Our team decided to build a fort using DE NIRO, and we split this project into t
 
 ### 2 Project Phases
 
-#### 2.1 Phase 1: [Building a Fort in Gazebo](https://github.com/fkundrak/DE3-Robotics-Fort-2020/wiki/2.1-Phase-1:-Building-a-Fort-in-Gazebo)
+#### 2.1 Phase 1: [Building a Fort in Gazebo with One Arm](https://github.com/fkundrak/DE3-Robotics-Fort-2020/wiki/2.1-Phase-1:-Building-a-Fort-in-Gazebo)
 2.1.1 [Pick and Place](https://github.com/fkundrak/DE3-Robotics-Fort-2020/wiki/2.1.1-Pick-and-Place)
 
 2.1.2 [Spawning Models](https://github.com/fkundrak/DE3-Robotics-Fort-2020/wiki/2.1.2-Spawning-Models)
