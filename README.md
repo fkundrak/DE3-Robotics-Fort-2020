@@ -8,7 +8,7 @@ Our team decided to build a fort using DE NIRO, and we split this project into t
 3. Building A Fort With Baxter Using Two Arms
 4. Gripper Checking
 
-![Image of the Fort](https://raw.githubusercontent.com/fkundrak/DE3-Robotics-Fort-2020/master/Fort%202.jpg)
+![Image of the Fort](https://github.com/fkundrak/DE3-Robotics-Fort-2020/blob/master/img/Fort%202.jpg)
 
 ## Contents
 
