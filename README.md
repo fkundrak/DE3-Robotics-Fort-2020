@@ -17,7 +17,7 @@ Our team decided to build a fort using DE NIRO, and we split this project into t
 
 ### 2 Project Phases
 
-#### 2.1 Phase 1: [Building a Fort in Gazebo with One Arm](https://github.com/fkundrak/DE3-Robotics-Fort-2020/wiki/2.1-Phase-1:-Building-a-Fort-in-Gazebo)
+#### 2.1 Phase 1: [Building A Fort In Gazebo Using One Arm](https://github.com/fkundrak/DE3-Robotics-Fort-2020/wiki/2.1-Phase-1:-Building-A-Fort-In-Gazebo-Using-One-Arm)
 2.1.1 [Pick and Place](https://github.com/fkundrak/DE3-Robotics-Fort-2020/wiki/2.1.1-Pick-and-Place)
 
 2.1.2 [Spawning Models](https://github.com/fkundrak/DE3-Robotics-Fort-2020/wiki/2.1.2-Spawning-Models)
@@ -28,10 +28,10 @@ Our team decided to build a fort using DE NIRO, and we split this project into t
 
 2.1.5 [DE NIRO Physics](https://github.com/fkundrak/DE3-Robotics-Fort-2020/wiki/2.1.5-DE-NIRO-Physics)
 
-#### 2.2 Phase 2: [Building a Fort with Baxter](https://github.com/fkundrak/DE3-Robotics-Fort-2020/wiki/2.2-Phase-2:-Building-a-Fort-with-Baxter)
+#### 2.2 Phase 2: [Building A Fort With Baxter Using One Arm](https://github.com/fkundrak/DE3-Robotics-Fort-2020/wiki/2.2-Phase-2:-Building-A-Fort-With-Baxter-Using-One-Arm)
 2.2.1 [Section 1](https://github.com/fkundrak/DE3-Robotics-Fort-2020/wiki/2.2.1-Section-1)
 
-#### 2.3 Phase 3: [Building a Fort with Baxter with Two Arms](https://github.com/fkundrak/DE3-Robotics-Fort-2020/wiki/2.3-Phase-3:-Building-a-Fort-with-Baxter-with-Two-Arms)
+#### 2.3 Phase 3: [Building A Fort With Baxter Using Two Arms](https://github.com/fkundrak/DE3-Robotics-Fort-2020/wiki/2.3-Phase-3:-Building-A-Fort-With-Baxter-Using-Two-Arms)
 2.3.1 [Section 1](https://github.com/fkundrak/DE3-Robotics-Fort-2020/wiki/2.3.1-Section-1)
 
 #### 2.4 Phase 4: [Building a Fort with Baxter using Image Recognition](https://github.com/fkundrak/DE3-Robotics-Fort-2020/wiki/2.4-Phase-4:-Building-a-Fort-with-Baxter-using-Image-Recognition)
@@ -41,6 +41,10 @@ Our team decided to build a fort using DE NIRO, and we split this project into t
 3.1 [Section 1](https://github.com/fkundrak/DE3-Robotics-Fort-2020/wiki/3.1-Section-1)
 
 ## The Team
-Clara Arcos, Rachel Brown, Franciska Kundrak, Jingtong Ng, Aisling Tai
+Clara Arcos
+Rachel Brown
+Franciska Kundrak
+Jingtong Ng
+Aisling Tai
 
 ## Bibliography
