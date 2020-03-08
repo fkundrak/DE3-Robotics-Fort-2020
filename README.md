@@ -2,10 +2,10 @@
 Building a Fort using DE NIRO (a Baxter robot belonging to the Dyson School of Design Engineering).
 ## Introduction
 Our team decided to build a fort using DE NIRO, and we split this project into the following phases: 
-1. Building a Fort in Gazebo with One Arm
-2. Building a Fort with Baxter with One Arm
-3. Building a Fort in Gazebo with Two Arms
-3. Building a Fort with Baxter with Two Arms
+1. Building A Fort In Gazebo Using One Arm
+2. Building A Fort With Baxter Using One Arm
+3. Building A Fort In Gazebo Using Two Arms
+3. Building A Fort With Baxter Using Two Arms
 4. Gripper Checking
 
 ![Image of the Fort](https://raw.githubusercontent.com/fkundrak/DE3-Robotics-Fort-2020/master/Fort%202.jpg)
