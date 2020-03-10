@@ -43,7 +43,7 @@ Our team decided to build a fort using DE NIRO, and we split this project into t
 #### Phase 5: [Gripper Checking](https://github.com/fkundrak/DE3-Robotics-Fort-2020/wiki/Phase-5:-Gripper-Checking)
 
 ### Additional Research
-> [Image Analysis](https://github.com/fkundrak/DE3-Robotics-Fort-2020/wiki/Image-Analysis)
+[Image Analysis](https://github.com/fkundrak/DE3-Robotics-Fort-2020/wiki/Image-Analysis)
 
 ## The Team
 
