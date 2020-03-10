@@ -411,7 +411,7 @@ def main():
     # Starting Pose for left arm round 1
     lstart_pose1 = Pose()
     lstart_pose1.position.x = 0.579679836383
-    lstart_pose1.position.y = 0.3 #0.283311769707
+    lstart_pose1.position.y = 0.3
     lstart_pose1.position.z = 0.413676720426
     lstart_pose1.orientation.x = -0.0249590815779
     lstart_pose1.orientation.y = 0.999649402929
@@ -421,7 +421,7 @@ def main():
     # Starting Pose for right arm
     rstart_pose1 = Pose()
     rstart_pose1.position.x = 0.579679836383
-    rstart_pose1.position.y = -0.3 #-0.283311769707
+    rstart_pose1.position.y = -0.3
     rstart_pose1.position.z = 0.413676720426
     rstart_pose1.orientation.x = -0.0249590815779
     rstart_pose1.orientation.y = 0.999649402929
@@ -433,7 +433,7 @@ def main():
     lpick_pose1 = Pose()
     lpick_pose1.position.x = 0.589679836383
     lpick_pose1.position.y = 0.7
-    lpick_pose1.position.z = 0.12-0.02
+    lpick_pose1.position.z = 0.10
     lpick_pose1.orientation.x = -0.0249590815779
     lpick_pose1.orientation.y = 0.999649402929
     lpick_pose1.orientation.z = 0.00737916180073
@@ -443,14 +443,14 @@ def main():
     rpick_pose1 = Pose()
     rpick_pose1.position.x = 0.589679836383
     rpick_pose1.position.y = -0.7
-    rpick_pose1.position.z = 0.12-0.02
+    rpick_pose1.position.z = 0.10
     rpick_pose1.orientation.x = -0.0249590815779
     rpick_pose1.orientation.y = 0.999649402929
     rpick_pose1.orientation.z = 0.00737916180073
     rpick_pose1.orientation.w = 0.00486450832011
 
     ltemp_pose = Pose()
-    ltemp_pose.position.x = 0.589679836383+.03
+    ltemp_pose.position.x = 0.619679836383‬
     ltemp_pose.position.y = 0.15
     ltemp_pose.position.z = 0.12
     ltemp_pose.orientation.x = -0.0249590815779
@@ -459,7 +459,7 @@ def main():
     ltemp_pose.orientation.w = 0.00486450832011
 
     rtemp_pose = Pose()
-    rtemp_pose.position.x = 0.589679836383+.05
+    rtemp_pose.position.x = 0.639679836383‬
     rtemp_pose.position.y = -0.15
     rtemp_pose.position.z = 0.12
     rtemp_pose.orientation.x = -0.0249590815779
@@ -469,18 +469,18 @@ def main():
 
 
     lctemp_pose = Pose()
-    lctemp_pose.position.x = 0.589679836383+.04
+    lctemp_pose.position.x = 0.629679836383
     lctemp_pose.position.y = 0.2
-    lctemp_pose.position.z = 0.12+0.192/2
+    lctemp_pose.position.z = 0.156‬
     lctemp_pose.orientation.x = -0.0249590815779
     lctemp_pose.orientation.y = 0.999649402929
     lctemp_pose.orientation.z = 0.00737916180073
     lctemp_pose.orientation.w = 0.00486450832011
 
     rctemp_pose = Pose()
-    rctemp_pose.position.x = 0.589679836383+.04
+    rctemp_pose.position.x = 0.629679836383
     rctemp_pose.position.y = -0.2
-    rctemp_pose.position.z = 0.12+0.192/2
+    rctemp_pose.position.z = 0.156‬
     rctemp_pose.orientation.x = -0.0249590815779
     rctemp_pose.orientation.y = 0.999649402929
     rctemp_pose.orientation.z = 0.00737916180073
@@ -488,18 +488,18 @@ def main():
 
 
     lstandby_pose = Pose()
-    lstandby_pose.position.x = 0.589679836383+.05
+    lstandby_pose.position.x = 0.639679836383‬
     lstandby_pose.position.y = 0.2
-    lstandby_pose.position.z = 0.12+.2
+    lstandby_pose.position.z = 0.32
     lstandby_pose.orientation.x = -0.0249590815779
     lstandby_pose.orientation.y = 0.999649402929
     lstandby_pose.orientation.z = 0.00737916180073
     lstandby_pose.orientation.w = 0.00486450832011
 
     rstandby_pose = Pose()
-    rstandby_pose.position.x = 0.589679836383+.05
+    rstandby_pose.position.x = 0.639679836383‬
     rstandby_pose.position.y = -0.2
-    rstandby_pose.position.z = 0.12+0.2
+    rstandby_pose.position.z = 0.32
     rstandby_pose.orientation.x = -0.0249590815779
     rstandby_pose.orientation.y = 0.999649402929
     rstandby_pose.orientation.z = 0.00737916180073
@@ -510,21 +510,21 @@ def main():
     ################################################ Coloumns Picking Position ########################################
     lpick_poseL456 = posedefined(  0.5897, \
                             0.7, \
-                            0.12+0.192*.55, \
+                            0.1716, \
                             -0.0249590815779,  \
                             0.999649402929, \
                             0.00737916180073, \
                             0.00486450832011)
     rpick_poseR456 = posedefined(  0.5897, \
                             -0.7, \
-                            0.12+0.192*.55, \
+                            0.1716, \
                             -0.0249590815779,  \
                             0.999649402929, \
                             0.00737916180073, \
                             0.00486450832011)
     lpick_pose10 = poseratioant(  0.589679836383, \
                             -0.735, \
-                            0.12+0.192*.6, \
+                            0.1872, \
                             3.14, \
                             3.14,\
                             3.14/2)
@@ -542,38 +542,37 @@ def main():
     right_pnp.move_to_start(right_pnp.ik_request(rstart_pose1))
 
     print("\nLoading Table...")
-    #load_gazebo_models_table_only()
+    load_gazebo_models_table_only()
 
 
     def full_l ():
         
-        ldata = [   ["brickL2",0,0.6+.03+.03,  0.192-0.03+0.05, 0.12-0.375, -0.0249590815779,   0.999649402929, 0.00737916180073,   0.00486450832011], \
-                ["brickL1",0,0.739+0.04+.03, 0.139-0.03+0.05+0.01, 0.12-0.375, 3.14,               0,              3.14/2                              ], \
-                ["brickL3",0,0.547+.02+.03,0.053-0.05+0.05,0.12-0.375,3.14,0,-3.14/2], \
-                ["brickLc4",1,0.739+.03+.03,0.149-0.09+0.05+0.05,0.32867204-0.375-0.02, 3.14,0,3.14/2], \
-                ["brickLc5",1,0.547+0.02+.03,0-0.09+0.05+0.05,0.32867204-0.375-.02-0.01,-0.0249590815779 , 0.999649402929, 0.00737916180073, 0.00486450832011], \
-                ["brickLc6",1,0.547+0.02+.03,0.149-0.09+0.05+0.05,0.32867204-0.375-0.02, 3.14,0,3.14/2], \
-                ["brickL7",0,0.547+.03+0.02,0.096+0.08-0.09+0.03+0.005,0.374-0.375,3.14,0,3.14/2], \
-                ["brickL8",0,0.739+0.02+.03+0.02,0.096-0.09+0.08+0.05-0.02+0.005,0.374-0.375,3.14,0,3.14/2], \
-                ["brickL9",0, 0.643+0.02+0.04, 0.059+0.05+0.03+0.02, 0.436-0.375 , -0.0249590815779 , 0.999649402929, 0.00737916180073, 0.00486450832011] ] #, \
-                # ["brickL10",1,0.643+0.02,0.05+0.05,0.498-0.375,3.14,0,3.14/2]   ]
+        ldata = [   ["brickL2",0, 0.66,  0.212, -0.255, -0.0249590815779, 0.999649402929, 0.00737916180073, 0.00486450832011], \
+                ["brickL1",0, 0.809, 0.169, -0.255, 3.14, 0, 3.14/2], \
+                ["brickL3",0, 0.597, 0.053, -0.255, 3.14, 0, -3.14/2], \
+                ["brickLc4",1, 0.799, 0.159, -0.06632796, 3.14, 0, 3.14/2], \
+                ["brickLc5",1, 0.597, 0.01, -0.07632796, -0.0249590815779 , 0.999649402929, 0.00737916180073, 0.00486450832011], \
+                ["brickLc6",1, 0.597, 0.159, -0.06632796, 3.14, 0, 3.14/2], \
+                ["brickL7",0, 0.597‬, 0.121, -0.001, 3.14, 0, 3.14/2], \
+                ["brickL8",0, 0.809, 0.121, -0.001, 3.14, 0, 3.14/2], \
+                ["brickL9",0, 0.703‬, 0.159, 0.061, -0.0249590815779, 0.999649402929, 0.00737916180073, 0.00486450832011] ]
 
         for li in range(len(ldata)):
             print "\nLoading ", ldata[li][0], "..."
 
 
             if (ldata[li][1]==1):
-                #load_lbrickv(ldata[li][0])
+                load_lbrickv(ldata[li][0])
                 print "\nPicking ", ldata[li][0], "..."
                 left_pnp.move_to_position(left_pnp.ik_request(lstandby_pose))
 
-                lgripping = 0
+                lgripping = 0 # Set gripping index to 0
 
-                while lgripping == 0 :
-                    left_pnp.pick(lpick_poseL456)
+                while lgripping == 0 : # While gripping index is 0...
+                    left_pnp.pick(lpick_poseL456) # ...attempt to pick the brick
                     print "\nFLOAT position", left_pnp.gripper_position()
-                    if left_pnp.gripper_position() > 20:
-                        lgripping = 1
+                    if left_pnp.gripper_position() > 20: # If distance between fingers is more than 20 (the brick has been picked)...
+                        lgripping = 1 # ...set gripping index to 0, breaking the loop
 
 
                 print "\nPlacing ", ldata[li][0], "..."
@@ -583,7 +582,7 @@ def main():
                 else:
                     left_pnp.pick2(lctemp_pose)
             else:
-                #load_lbrick(ldata[li][0])
+                load_lbrick(ldata[li][0])
 
 
                 print "\nPicking ", ldata[li][0], "..."
@@ -614,16 +613,16 @@ def main():
     def full_r ():
         time.sleep(15)
 
-        rdata = [   ["brickR1",0,0.547+.02+.03,-0.139-0.01,0.12-0.375,3.14,0,-3.14/2], \
-                ["brickR3",0,0.739+0.04+.03-0.01,-0.053+0.02,0.12-0.375,3.14,0,3.14/2], \
-                ["brickR2",0,0.686+0.02+.03+0.01,  -0.192-0.03+0.05-0.04+.02, 0.12-0.375, -0.0249590815779,   0.999649402929, 0.00737916180073,   0.00486450832011], \
-                ["brickRc4",1,0.739+0.02+.03+.03,-0.09+0.05+0.05,0.32867204-0.375-0.02-0.01, -0.0249590815779 , 0.999649402929, 0.00737916180073, 0.00486450832011], \
-                ["brickRc5",1,0.739+.03+0.02+.03,-0.149-0.09+0.05+0.05,0.32867204-0.375-0.02-0.01, 3.14,0,3.14/2], \
-                ["brickRc6",1,0.547+0.02+0.02,-0.149-0.09+0.05+0.05,0.32867204-0.375-0.02-0.01, 3.14,0,3.14/2], \
-                ["brickR7",0,0.739+0.04+.01+0.03,-0.096+0.05-0.09+.05-0.005-0.02,0.374-0.375,3.14,0,-3.14/2], \
-                ["brickR8",0,0.547+.03+0.02,-0.096+0.05-0.09+.04-0.005,0.374-0.375,3.14,0,-3.14/2], \
-                ["brickR9",0, 0.643+0.02+0.04, -0.09+0.05+0.05-0.01, 0.436-0.375 , -0.0249590815779, 0.999649402929, 0.00737916180073, 0.00486450832011], \
-                ["brickR10",0, 0.643+0.02+0.04, -0.239+0.05+0.05, 0.436-0.375, -0.0249590815779, 0.999649402929, 0.00737916180073, 0.00486450832011] ]
+        rdata = [   ["brickR1",0, 0.597, -0.149‬, -0.255, 3.14, 0, -3.14/2], \
+                ["brickR3",0, 0.799, -0.033, -0.255, 3.14, 0, 3.14/2], \
+                ["brickR2",0, 0.746‬, -0.192‬, -0.255, -0.0249590815779, 0.999649402929, 0.00737916180073, 0.00486450832011], \
+                ["brickRc4",1, 0.819‬, 0.01‬, -0.07632796, -0.0249590815779 , 0.999649402929, 0.00737916180073, 0.00486450832011], \
+                ["brickRc5",1, 0.819‬, -0.139‬, -0.07632796, 3.14, 0, 3.14/2], \
+                ["brickRc6",1, 0.587‬,-0.139‬, -0.07632796, 3.14, 0, 3.14/2], \
+                ["brickR7",0, 0.819, -0.111‬, -0.001, 3.14, 0, -3.14/2], \
+                ["brickR8",0, 0.597, -0.101, -0.001, 3.14, 0, -3.14/2], \
+                ["brickR9",0, 0.703, 0, 0.061‬, -0.0249590815779, 0.999649402929, 0.00737916180073, 0.00486450832011], \
+                ["brickR10",0, 0.703, -0.139‬, 0.061‬, -0.0249590815779, 0.999649402929, 0.00737916180073, 0.00486450832011] ]
 
 
         for ri in range(len(rdata)):
@@ -631,7 +630,7 @@ def main():
 
             if (rdata[ri][1]==1):
 
-                # load_rbrickv(rdata[ri][0])
+                load_rbrickv(rdata[ri][0])
 
                 print "\nPicking ", rdata[ri][0], "..."
                 right_pnp.move_to_position(right_pnp.ik_request(rstandby_pose))
@@ -649,7 +648,7 @@ def main():
 
             else:
 
-                #load_rbrick(rdata[ri][0])
+                load_rbrick(rdata[ri][0])
                 print "\nPicking ", rdata[ri][0], "..."
                 rgripping = 0
 
@@ -680,7 +679,7 @@ def main():
     thread1.start() # start both threads
     thread2.start()
 
-    ############################################ End code stuff#########################
+    ############################################ End code stuff #########################
 
     print("\nFort Building Complete!")
 
