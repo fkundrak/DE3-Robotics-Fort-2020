@@ -195,8 +195,8 @@ def poseratioant(px,py,pz,roll,pitch,yaw):
 
 def posedefined(px,py,pz,ox,oy,oz,ow):
     """
-    This function taken position and quartenions and returns the pose
-    It's used for the bricks that don't need to be rotated, as poseratioant
+    This function takes position and quartenions and returns the pose
+    It's used for the bricks that don't need to be rotated, as 'poseratioant'
     was found to misbehave with these bricks
     """
     my_pose_msg = Pose()
@@ -261,49 +261,13 @@ def load_gazebo_models_tables(
         rospy.logerr("Spawn SDF service call failed: {0}".format(e))
 
 
-def delete_gazebo_models():
-    try:
-        delete_model = rospy.ServiceProxy('/gazebo/delete_model', DeleteModel)
-
-        # Base bricks
-        resp_delete = delete_model("brickL1")
-        resp_delete = delete_model("brickR1")
-        resp_delete = delete_model("brickL2")
-        resp_delete = delete_model("brickR2")
-        resp_delete = delete_model("brickL3")
-        resp_delete = delete_model("brickR3")
-
-        # Column bricks
-        resp_delete = delete_model("brickRc4")
-        resp_delete = delete_model("brickRc5")
-        resp_delete = delete_model("brickRc6")
-        resp_delete = delete_model("brickLc4")
-        resp_delete = delete_model("brickLc5")
-        resp_delete = delete_model("brickLc6")
-
-        # Top bricks
-        resp_delete = delete_model("brickL7")
-        resp_delete = delete_model("brickR7")
-        resp_delete = delete_model("brickL8")
-        resp_delete = delete_model("brickR8")
-        resp_delete = delete_model("brickL9")
-        resp_delete = delete_model("brickR9")
-        resp_delete = delete_model("brickL10")
-        resp_delete = delete_model("brickR10")
-
-        # Tables
-        resp_delete = delete_model("cafe_table")
-        resp_delete = delete_model("ltable")
-        resp_delete = delete_model("rtable")
-
-    except rospy.ServiceException, e:
-        rospy.loginfo("Delete Model service call failed: {0}".format(e))
-
-
+# Spawning of Bricks in Gazebo - learn more in the Wiki -----------------------
+# (Phase 1: Building A Fort In Gazebo Using One Arm) --------------------------
 def load_rbrick(
-        brickid,
+        brickid, # Takes brickid (generated in main()) as an input to allow for multiple models
         brick_pose=Pose(position=Point(x=0.5897, y=-0.7, z=0.82)),
         brick_reference_frame="world"):
+
     # Load Brick SDF
     brick_xml = ''
     with open ("models/brick/model.sdf", "r") as brick_file:
@@ -323,6 +287,7 @@ def load_lbrick(
         brickid,
         brick_pose=Pose(position=Point(x=0.5897, y=0.7, z=0.82)),
         brick_reference_frame="world"):
+        
     # Load Brick SDF
     brick_xml = ''
     with open ("models/brick/model.sdf", "r") as brick_file:
@@ -374,9 +339,50 @@ def load_lbrickv(
                                brick_pose, brick_reference_frame)
     except rospy.ServiceException, e:
         rospy.logerr("Spawn SDF service call failed: {0}".format(e))
+# -----------------------------------------------------------------------------
 
-# Threading For Usage of Both Arms - more details in Wiki ---
-# (Phase 4: Building A Fort With Baxter Using Two Arms) -----
+
+def delete_gazebo_models():
+    try:
+        delete_model = rospy.ServiceProxy('/gazebo/delete_model', DeleteModel)
+
+        # Base bricks
+        resp_delete = delete_model("brickL1")
+        resp_delete = delete_model("brickR1")
+        resp_delete = delete_model("brickL2")
+        resp_delete = delete_model("brickR2")
+        resp_delete = delete_model("brickL3")
+        resp_delete = delete_model("brickR3")
+
+        # Column bricks
+        resp_delete = delete_model("brickRc4")
+        resp_delete = delete_model("brickRc5")
+        resp_delete = delete_model("brickRc6")
+        resp_delete = delete_model("brickLc4")
+        resp_delete = delete_model("brickLc5")
+        resp_delete = delete_model("brickLc6")
+
+        # Top bricks
+        resp_delete = delete_model("brickL7")
+        resp_delete = delete_model("brickR7")
+        resp_delete = delete_model("brickL8")
+        resp_delete = delete_model("brickR8")
+        resp_delete = delete_model("brickL9")
+        resp_delete = delete_model("brickR9")
+        resp_delete = delete_model("brickL10")
+        resp_delete = delete_model("brickR10")
+
+        # Tables
+        resp_delete = delete_model("cafe_table")
+        resp_delete = delete_model("ltable")
+        resp_delete = delete_model("rtable")
+
+    except rospy.ServiceException, e:
+        rospy.loginfo("Delete Model service call failed: {0}".format(e))
+
+
+# Threading For Usage of Both Arms - learn more in the Wiki -------------------
+# (Phase 4: Building A Fort With Baxter Using Two Arms) -----------------------
 class ArmThread(threading.Thread):
     def __init__(self, threadID, arm_name):
         super(ArmThread, self).__init__() # Initialise threads
@@ -386,12 +392,12 @@ class ArmThread(threading.Thread):
 
     def run(self): # Run both arms
         if self.arm_name == "l":
-            full_l()
+            full_l() # Run left arm
         if self.arm_name == "r":
-            full_r()
+            full_r() # Run right arm
         else:
             print("error")
-#------------------------------------------------------------
+#------------------------------------------------------------------------------
 
 
 def main():
@@ -464,7 +470,7 @@ def main():
     rtemp_pose.orientation.w = 0.00486450832011
     #--------------------------------------------------------
 
-    # Vertical Brick Temporary Position -------------------
+    # Vertical Brick Temporary Position ---------------------
     lctemp_pose = Pose()
     lctemp_pose.position.x = 0.629679836383
     lctemp_pose.position.y = 0.2
@@ -484,7 +490,7 @@ def main():
     rctemp_pose.orientation.w = 0.00486450832011
     #--------------------------------------------------------
 
-    # Standby Position --------------------------------------
+    # Standby Position (after placing a brick) --------------
     lstandby_pose = Pose()
     lstandby_pose.position.x = 0.639679836383
     lstandby_pose.position.y = 0.2
@@ -505,19 +511,20 @@ def main():
     #--------------------------------------------------------
 
     # Vertical Brick Picking Position -----------------------
-    lpick_poseL456 = posedefined(  0.5897, \
-                            0.7, \
-                            0.2256, \
-                            -0.0249590815779,  \
-                            0.999649402929, \
-                            0.00737916180073, \
+    lpick_poseL456 = posedefined(  0.5897,
+                            0.7, 
+                            0.2256,
+                            -0.0249590815779,
+                            0.999649402929,
+                            0.00737916180073,
                             0.00486450832011)
-    rpick_poseR456 = posedefined(  0.5897, \
-                            -0.7, \
-                            0.2256, \
-                            -0.0249590815779,  \
-                            0.999649402929, \
-                            0.00737916180073, \
+
+    rpick_poseR456 = posedefined(  0.5897,
+                            -0.7,
+                            0.2256,
+                            -0.0249590815779,
+                            0.999649402929,
+                            0.00737916180073,
                             0.00486450832011)
     #--------------------------------------------------------
 
@@ -537,15 +544,16 @@ def main():
     # Execute Left Arm --------------------------------------
     def full_l():
         
-        ldata = [   ["brickL2",0, 0.66,  0.212, -0.255, -0.0249590815779, 0.999649402929, 0.00737916180073, 0.00486450832011], \
-                ["brickL1",0, 0.809, 0.169, -0.255, 3.14, 0, 3.14/2], \
-                ["brickL3",0, 0.597, 0.053, -0.255, 3.14, 0, -3.14/2], \
-                ["brickLc4",1, 0.799, 0.159, -0.06632796, 3.14, 0, 3.14/2], \
-                ["brickLc5",1, 0.597, 0.01, -0.07632796, -0.0249590815779 , 0.999649402929, 0.00737916180073, 0.00486450832011], \
-                ["brickLc6",1, 0.597, 0.159, -0.06632796, 3.14, 0, 3.14/2], \
-                ["brickL7",0, 0.597, 0.121, -0.001, 3.14, 0, 3.14/2], \
-                ["brickL8",0, 0.809, 0.121, -0.001, 3.14, 0, 3.14/2], \
+        ldata = [   ["brickL2",0, 0.66,  0.212, -0.255, -0.0249590815779, 0.999649402929, 0.00737916180073, 0.00486450832011],
+                ["brickL1",0, 0.809, 0.169, -0.255, 3.14, 0, 3.14/2],
+                ["brickL3",0, 0.597, 0.053, -0.255, 3.14, 0, -3.14/2],
+                ["brickLc4",1, 0.799, 0.159, -0.06632796, 3.14, 0, 3.14/2],
+                ["brickLc5",1, 0.597, 0.01, -0.07632796, -0.0249590815779 , 0.999649402929, 0.00737916180073, 0.00486450832011],
+                ["brickLc6",1, 0.597, 0.159, -0.06632796, 3.14, 0, 3.14/2],
+                ["brickL7",0, 0.597, 0.121, -0.001, 3.14, 0, 3.14/2],
+                ["brickL8",0, 0.809, 0.121, -0.001, 3.14, 0, 3.14/2],
                 ["brickL9",0, 0.703, 0.159, 0.061, -0.0249590815779, 0.999649402929, 0.00737916180073, 0.00486450832011] ]
+        # [BrickName,0 for horizontal / 1 for vertical, x, y, z, roll, pitch, yaw) or [BrickName,0 for horizontal / 1 for vertical, x, y, z, x, y ,z ,w)
 
         for li in range(len(ldata)):
             print("\nLoading ", ldata[li][0], "...")
@@ -590,9 +598,11 @@ def main():
             if len(ldata[li])==8:
                 print("\nrationant ")
                 lplace_pose = poseratioant(ldata[li][2],ldata[li][3]-.01,ldata[li][4]-0.01,ldata[li][5],ldata[li][6],ldata[li][7])
+                # Creates the pose using the function 'poseratioant'
             else:
                 print("\ndefined ")
                 lplace_pose = posedefined(ldata[li][2],ldata[li][3]-.01,ldata[li][4]-0.01,ldata[li][5],ldata[li][6],ldata[li][7],ldata[li][8])
+                # Creates the pose using the function 'posedefined'
 
             left_pnp.place(lplace_pose)
             left_pnp.move_to_position(left_pnp.ik_request(ltemp_pose))
@@ -603,16 +613,17 @@ def main():
     def full_r ():
         time.sleep(15)
 
-        rdata = [   ["brickR1",0, 0.597, -0.149, -0.255, 3.14, 0, -3.14/2], \
-                ["brickR3",0, 0.799, -0.033, -0.255, 3.14, 0, 3.14/2], \
-                ["brickR2",0, 0.746, -0.192, -0.255, -0.0249590815779, 0.999649402929, 0.00737916180073, 0.00486450832011], \
-                ["brickRc4",1, 0.819, 0.01, -0.07632796, -0.0249590815779 , 0.999649402929, 0.00737916180073, 0.00486450832011], \
-                ["brickRc5",1, 0.819, -0.139, -0.07632796, 3.14, 0, 3.14/2], \
-                ["brickRc6",1, 0.587,-0.139, -0.07632796, 3.14, 0, 3.14/2], \
-                ["brickR7",0, 0.819, -0.111, -0.001, 3.14, 0, -3.14/2], \
-                ["brickR8",0, 0.597, -0.101, -0.001, 3.14, 0, -3.14/2], \
-                ["brickR9",0, 0.703, 0, 0.061, -0.0249590815779, 0.999649402929, 0.00737916180073, 0.00486450832011], \
+        rdata = [   ["brickR1",0, 0.597, -0.149, -0.255, 3.14, 0, -3.14/2],
+                ["brickR3",0, 0.799, -0.033, -0.255, 3.14, 0, 3.14/2],
+                ["brickR2",0, 0.746, -0.192, -0.255, -0.0249590815779, 0.999649402929, 0.00737916180073, 0.00486450832011],
+                ["brickRc4",1, 0.819, 0.01, -0.07632796, -0.0249590815779 , 0.999649402929, 0.00737916180073, 0.00486450832011],
+                ["brickRc5",1, 0.819, -0.139, -0.07632796, 3.14, 0, 3.14/2],
+                ["brickRc6",1, 0.587,-0.139, -0.07632796, 3.14, 0, 3.14/2],
+                ["brickR7",0, 0.819, -0.111, -0.001, 3.14, 0, -3.14/2],
+                ["brickR8",0, 0.597, -0.101, -0.001, 3.14, 0, -3.14/2],
+                ["brickR9",0, 0.703, 0, 0.061, -0.0249590815779, 0.999649402929, 0.00737916180073, 0.00486450832011],
                 ["brickR10",0, 0.703, -0.139, 0.061, -0.0249590815779, 0.999649402929, 0.00737916180073, 0.00486450832011] ]
+        # [BrickName,0 for horizontal / 1 for vertical, x, y, z, roll, pitch, yaw) or [BrickName,0 for horizontal / 1 for vertical, x, y, z, x, y ,z ,w)
 
         for ri in range(len(rdata)):
             print("\nLoading ", rdata[ri][0], "...")
@@ -656,9 +667,11 @@ def main():
             if len(rdata[ri])==8:
                 print("\nrationant ")
                 rplace_pose = poseratioant(rdata[ri][2],rdata[ri][3]-.01,rdata[ri][4]-0.01,rdata[ri][5],rdata[ri][6],rdata[ri][7])
+                # Creates the pose using the function 'poseratioant'
             else:
                 print("\ndefined ")
                 rplace_pose = posedefined(rdata[ri][2],rdata[ri][3]-.01,rdata[ri][4]-0.01,rdata[ri][5],rdata[ri][6],rdata[ri][7],rdata[ri][8])
+                # Creates the pose using the function 'posedefined'
 
             right_pnp.place(rplace_pose)
             right_pnp.move_to_position(right_pnp.ik_request(rtemp_pose))
