@@ -22,6 +22,7 @@ Our team decided to build a fort using DE NIRO, and we split this project into t
 > [Spawning Models](https://github.com/fkundrak/DE3-Robotics-Fort-2020/wiki/Spawning-Models-in-Gazebo) \
 > [Gripper Settings](https://github.com/fkundrak/DE3-Robotics-Fort-2020/wiki/Changing-the-Gripper-Settings) \
 > [Brick Physics](https://github.com/fkundrak/DE3-Robotics-Fort-2020/wiki/Brick-Physics) \
+> [Vertical Columns](https://github.com/fkundrak/DE3-Robotics-Fort-2020/wiki/Vertical-Columns) \
 > [Inverse Kinematics](https://github.com/fkundrak/DE3-Robotics-Fort-2020/wiki/Understanding-Inverse-Kinematics) \
 > [Quaternion](https://github.com/fkundrak/DE3-Robotics-Fort-2020/wiki/Understanding-Quaternion) \
 > [Troubleshooting](https://github.com/fkundrak/DE3-Robotics-Fort-2020/wiki/Phase-1:-Troubleshooting)
@@ -32,18 +33,18 @@ Our team decided to build a fort using DE NIRO, and we split this project into t
 > [Troubleshooting](https://github.com/fkundrak/DE3-Robotics-Fort-2020/wiki/Phase-2:-Troubleshooting)
 
 #### Phase 3: [Building A Fort In Gazebo Using Two Arms](https://github.com/fkundrak/DE3-Robotics-Fort-2020/wiki/Phase-3:-Building-A-Fort-In-Gazebo-Using-Two-Arms)
+> [Threading](https://github.com/fkundrak/DE3-Robotics-Fort-2020/wiki/Controlling-Both-Arms-Using-Threading) \
 > [Motion Planning](https://github.com/fkundrak/DE3-Robotics-Fort-2020/wiki/Phase-3:-Motion-Planning) \
-> [Fort Construction Set-up](https://github.com/fkundrak/DE3-Robotics-Fort-2020/wiki/Fort-Construction-Set-up) \
-> [Vertical Columns](https://github.com/fkundrak/DE3-Robotics-Fort-2020/wiki/Vertical-Columns)
+> [Fort Construction Set-up](https://github.com/fkundrak/DE3-Robotics-Fort-2020/wiki/Fort-Construction-Set-up)
 
 #### Phase 4: [Building A Fort With Baxter Using Two Arms](https://github.com/fkundrak/DE3-Robotics-Fort-2020/wiki/Phase-4:-Building-A-Fort-With-Baxter-Using-Two-Arms)
-> [Threading](https://github.com/fkundrak/DE3-Robotics-Fort-2020/wiki/Controlling-Both-Arms-Using-Threading) \
 > [Troubleshooting](https://github.com/fkundrak/DE3-Robotics-Fort-2020/wiki/Phase-4:-Troubleshooting)
 
 #### Phase 5: [Gripper Checking](https://github.com/fkundrak/DE3-Robotics-Fort-2020/wiki/Phase-5:-Gripper-Checking)
 
 ### Additional Research
-[Image Analysis](https://github.com/fkundrak/DE3-Robotics-Fort-2020/wiki/Image-Analysis)
+[Image Analysis](https://github.com/fkundrak/DE3-Robotics-Fort-2020/wiki/Image-Analysis) \
+[Further Improvements](https://github.com/fkundrak/DE3-Robotics-Fort-2020/wiki/Further-Improvements)
 
 ## The Team
 
