@@ -201,6 +201,8 @@ def posedefined(px,py,pz,ox,oy,oz,ow):
     return my_pose_msg
 
 
+# Spawning of Tables in Gazebo - learn more in the Wiki -----------------------
+# (Phase 1: Building A Fort In Gazebo Using One Arm - Spawning Models) --------
 def load_gazebo_models_tables(
         table_pose=Pose(position=Point(x=0.8, y=0.0, z=0.0)),
         table_reference_frame="world",
@@ -212,7 +214,7 @@ def load_gazebo_models_tables(
     table_xml = ''
     with open ("models/cafe_table/model.sdf", "r") as table_file:
         table_xml=table_file.read().replace('\n', '')
-   
+
     # Spawn Table SDF
     rospy.wait_for_service('/gazebo/spawn_sdf_model')
     try:
@@ -226,7 +228,7 @@ def load_gazebo_models_tables(
     ltable_xml = ''
     with open ("models/side_table/model.sdf", "r") as ltable_file:
         ltable_xml=ltable_file.read().replace('\n', '')
-   
+
     # Spawn Table SDF
     rospy.wait_for_service('/gazebo/spawn_sdf_model')
     try:
@@ -235,12 +237,12 @@ def load_gazebo_models_tables(
                              ltable_pose, ltable_reference_frame)
     except rospy.ServiceException, e:
         rospy.logerr("Spawn SDF service call failed: {0}".format(e))
- 
+
     # Load Table SDF
     rtable_xml = ''
     with open ("models/side_table/model.sdf", "r") as rtable_file:
         rtable_xml=rtable_file.read().replace('\n', '')
-   
+
     # Spawn Table SDF
     rospy.wait_for_service('/gazebo/spawn_sdf_model')
     try:
@@ -249,10 +251,11 @@ def load_gazebo_models_tables(
                              rtable_pose, rtable_reference_frame)
     except rospy.ServiceException, e:
         rospy.logerr("Spawn SDF service call failed: {0}".format(e))
+# -----------------------------------------------------------------------------
 
 
 # Spawning of Bricks in Gazebo - learn more in the Wiki -----------------------
-# (Phase 1: Building A Fort In Gazebo Using One Arm) --------------------------
+# (Phase 1: Building A Fort In Gazebo Using One Arm - Spawning Models) --------
 def load_rbrick(
         brickid, # Takes brickid (generated in main()) as an input to allow for multiple models
         brick_pose=Pose(position=Point(x=0.5897, y=-0.7, z=0.82)),
