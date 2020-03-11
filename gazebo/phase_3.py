@@ -379,7 +379,7 @@ def load_lbrickv(
 # (Phase 4: Building A Fort With Baxter Using Two Arms) -----
 class ArmThread(threading.Thread):
     def __init__(self, threadID, arm_name):
-        super().__init__() # Initialise threads
+        super(ArmThread, self).__init__() # Initialise threads
         # threading.Thread.__init__(self)
         self.threadID = threadID # Two threads will be running, IDs are 1 and 2
         self.arm_name = arm_name # One thread per arm
@@ -428,7 +428,7 @@ def main():
     lpick_pose1 = Pose()
     lpick_pose1.position.x = 0.589679836383
     lpick_pose1.position.y = 0.7
-    lpick_pose1.position.z = 0.10
+    lpick_pose1.position.z = 0.1
     lpick_pose1.orientation.x = -0.0249590815779
     lpick_pose1.orientation.y = 0.999649402929
     lpick_pose1.orientation.z = 0.00737916180073
@@ -437,7 +437,7 @@ def main():
     rpick_pose1 = Pose()
     rpick_pose1.position.x = 0.589679836383
     rpick_pose1.position.y = -0.7
-    rpick_pose1.position.z = 0.10
+    rpick_pose1.position.z = 0.1
     rpick_pose1.orientation.x = -0.0249590815779
     rpick_pose1.orientation.y = 0.999649402929
     rpick_pose1.orientation.z = 0.00737916180073
@@ -468,7 +468,7 @@ def main():
     lctemp_pose = Pose()
     lctemp_pose.position.x = 0.629679836383
     lctemp_pose.position.y = 0.2
-    lctemp_pose.position.z = 0.156‬
+    lctemp_pose.position.z = 0.216
     lctemp_pose.orientation.x = -0.0249590815779
     lctemp_pose.orientation.y = 0.999649402929
     lctemp_pose.orientation.z = 0.00737916180073
@@ -477,7 +477,7 @@ def main():
     rctemp_pose = Pose()
     rctemp_pose.position.x = 0.629679836383
     rctemp_pose.position.y = -0.2
-    rctemp_pose.position.z = 0.156‬
+    rctemp_pose.position.z = 0.216
     rctemp_pose.orientation.x = -0.0249590815779
     rctemp_pose.orientation.y = 0.999649402929
     rctemp_pose.orientation.z = 0.00737916180073
@@ -507,21 +507,21 @@ def main():
     # Vertical Brick Picking Position -----------------------
     lpick_poseL456 = posedefined(  0.5897, \
                             0.7, \
-                            0.1716, \
+                            0.2256, \
                             -0.0249590815779,  \
                             0.999649402929, \
                             0.00737916180073, \
                             0.00486450832011)
     rpick_poseR456 = posedefined(  0.5897, \
                             -0.7, \
-                            0.1716, \
+                            0.2256, \
                             -0.0249590815779,  \
                             0.999649402929, \
                             0.00737916180073, \
                             0.00486450832011)
     lpick_pose10 = poseratioant(  0.589679836383, \
                             -0.735, \
-                            0.1872, \
+                            0.2352, \
                             3.14, \
                             3.14,\
                             3.14/2)
