@@ -1,14 +1,14 @@
 """
-Pick a Brick - Based on 'Simple Pick And Place Demo'
+FORT : Building a Fort with DE NIRO Baxter Robot
+Phase 0 - Pick a Brick
+
 Modified from Baxter SDK example (https://sdk.rethinkrobotics.com/wiki/Home)
 
-Last modified by : Clara Arcos
-2020
+Written by : Aisling Tai, Jingtong Ng, Rachel Brown
+Reviewed and commented by: Clara Arcos, Rachel Brown
+Last updated: 2020
 """
 
-"""
-Baxter RSDK Inverse Kinematics Pick and Place Demo
-"""
 import argparse
 import struct
 import sys
