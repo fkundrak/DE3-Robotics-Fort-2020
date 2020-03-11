@@ -185,8 +185,8 @@ def poseratioant(px,py,pz,roll,pitch,yaw):
 def posedefined(px,py,pz,ox,oy,oz,ow):
     """
     This function takes position and quartenions and returns the pose
-    It's used for the bricks that don't need to be rotated, as 'poseratioant'
-    was found to misbehave with these bricks
+    It's used for the bricks that don't need to be rotated
+    Learn more about quartenions in the Wiki (Phase 1: Building A Fort In Gazebo Using One Arm)
     """
     my_pose_msg = Pose()
     my_pose_msg.position.x = px
@@ -327,6 +327,7 @@ def main():
                             0.00486450832011)
     #--------------------------------------------------------
 
+    # Left Side Bricks Desired Positions --------------------
     ldata_f = [   ["brickL2",0, 0.66,  0.212, -0.255, -0.0249590815779, 0.999649402929, 0.00737916180073, 0.00486450832011],
                 ["brickL1",0, 0.809, 0.169, -0.255, 3.14, 0, 3.14/2],
                 ["brickL3",0, 0.597, 0.053, -0.255, 3.14, 0, -3.14/2],
@@ -336,8 +337,10 @@ def main():
                 ["brickL7",0, 0.597, 0.121, -0.001, 3.14, 0, 3.14/2],
                 ["brickL8",0, 0.809, 0.121, -0.001, 3.14, 0, 3.14/2],
                 ["brickL9",0, 0.703, 0.159, 0.061, -0.0249590815779, 0.999649402929, 0.00737916180073, 0.00486450832011] ]
-    # [BrickName,0 for horizontal / 1 for vertical, x, y, z, roll, pitch, yaw) or [BrickName,0 for horizontal / 1 for vertical, x, y, z, x, y ,z ,w)
+        # [BrickName,0 for horizontal / 1 for vertical, x, y, z, roll, pitch, yaw) or [BrickName,0 for horizontal / 1 for vertical, x, y, z, x, y ,z ,w)
+    #--------------------------------------------------------
 
+    # Right Side Bricks Desired Positions -------------------
     rdata_f = [   ["brickR1",0, 0.597, -0.149, -0.255, 3.14, 0, -3.14/2],
                 ["brickR3",0, 0.799, -0.033, -0.255, 3.14, 0, 3.14/2],
                 ["brickR2",0, 0.746, -0.192, -0.255, -0.0249590815779, 0.999649402929, 0.00737916180073, 0.00486450832011],
@@ -349,6 +352,7 @@ def main():
                 ["brickR9",0, 0.703, 0, 0.061, -0.0249590815779, 0.999649402929, 0.00737916180073, 0.00486450832011],
                 ["brickR10",0, 0.703, -0.139, 0.061, -0.0249590815779, 0.999649402929, 0.00737916180073, 0.00486450832011] ]
         # [BrickName,0 for horizontal / 1 for vertical, x, y, z, roll, pitch, yaw) or [BrickName,0 for horizontal / 1 for vertical, x, y, z, x, y ,z ,w)
+    #--------------------------------------------------------
 
     os.system('rosrun baxter_tools tuck_arms.py -u') # Untuck DE NIRO's arms
 
