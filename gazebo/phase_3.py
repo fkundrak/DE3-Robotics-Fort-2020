@@ -214,9 +214,9 @@ def posedefined(px,py,pz,ox,oy,oz,ow):
 def load_gazebo_models_tables(
         table_pose=Pose(position=Point(x=0.8, y=0.0, z=0.0)),
         table_reference_frame="world",
-        rtable_pose=Pose(position=Point(x=0.8, y=-1.075‬, z=0.0)),
+        rtable_pose=Pose(position=Point(x=0.8, y=-1.075, z=0.0)),
         rtable_reference_frame="world",
-        ltable_pose=Pose(position=Point(x=0.8, y=1.075‬, z=0.0)),
+        ltable_pose=Pose(position=Point(x=0.8, y=1.075, z=0.0)),
         ltable_reference_frame="world"):
     # Load Table SDF
     table_xml = ''
@@ -446,7 +446,7 @@ def main():
 
     # Horizontal Brick Temporary Position -------------------
     ltemp_pose = Pose()
-    ltemp_pose.position.x = 0.619679836383‬
+    ltemp_pose.position.x = 0.619679836383
     ltemp_pose.position.y = 0.15
     ltemp_pose.position.z = 0.12
     ltemp_pose.orientation.x = -0.0249590815779
@@ -455,7 +455,7 @@ def main():
     ltemp_pose.orientation.w = 0.00486450832011
 
     rtemp_pose = Pose()
-    rtemp_pose.position.x = 0.639679836383‬
+    rtemp_pose.position.x = 0.639679836383
     rtemp_pose.position.y = -0.15
     rtemp_pose.position.z = 0.12
     rtemp_pose.orientation.x = -0.0249590815779
@@ -486,7 +486,7 @@ def main():
 
     # Standby Position --------------------------------------
     lstandby_pose = Pose()
-    lstandby_pose.position.x = 0.639679836383‬
+    lstandby_pose.position.x = 0.639679836383
     lstandby_pose.position.y = 0.2
     lstandby_pose.position.z = 0.32
     lstandby_pose.orientation.x = -0.0249590815779
@@ -495,7 +495,7 @@ def main():
     lstandby_pose.orientation.w = 0.00486450832011
 
     rstandby_pose = Pose()
-    rstandby_pose.position.x = 0.639679836383‬
+    rstandby_pose.position.x = 0.639679836383
     rstandby_pose.position.y = -0.2
     rstandby_pose.position.z = 0.32
     rstandby_pose.orientation.x = -0.0249590815779
@@ -549,9 +549,9 @@ def main():
                 ["brickLc4",1, 0.799, 0.159, -0.06632796, 3.14, 0, 3.14/2], \
                 ["brickLc5",1, 0.597, 0.01, -0.07632796, -0.0249590815779 , 0.999649402929, 0.00737916180073, 0.00486450832011], \
                 ["brickLc6",1, 0.597, 0.159, -0.06632796, 3.14, 0, 3.14/2], \
-                ["brickL7",0, 0.597‬, 0.121, -0.001, 3.14, 0, 3.14/2], \
+                ["brickL7",0, 0.597, 0.121, -0.001, 3.14, 0, 3.14/2], \
                 ["brickL8",0, 0.809, 0.121, -0.001, 3.14, 0, 3.14/2], \
-                ["brickL9",0, 0.703‬, 0.159, 0.061, -0.0249590815779, 0.999649402929, 0.00737916180073, 0.00486450832011] ]
+                ["brickL9",0, 0.703, 0.159, 0.061, -0.0249590815779, 0.999649402929, 0.00737916180073, 0.00486450832011] ]
 
         for li in range(len(ldata)):
             print("\nLoading ", ldata[li][0], "...")
@@ -609,16 +609,16 @@ def main():
     def full_r ():
         time.sleep(15)
 
-        rdata = [   ["brickR1",0, 0.597, -0.149‬, -0.255, 3.14, 0, -3.14/2], \
+        rdata = [   ["brickR1",0, 0.597, -0.149, -0.255, 3.14, 0, -3.14/2], \
                 ["brickR3",0, 0.799, -0.033, -0.255, 3.14, 0, 3.14/2], \
-                ["brickR2",0, 0.746‬, -0.192‬, -0.255, -0.0249590815779, 0.999649402929, 0.00737916180073, 0.00486450832011], \
-                ["brickRc4",1, 0.819‬, 0.01‬, -0.07632796, -0.0249590815779 , 0.999649402929, 0.00737916180073, 0.00486450832011], \
-                ["brickRc5",1, 0.819‬, -0.139‬, -0.07632796, 3.14, 0, 3.14/2], \
-                ["brickRc6",1, 0.587‬,-0.139‬, -0.07632796, 3.14, 0, 3.14/2], \
-                ["brickR7",0, 0.819, -0.111‬, -0.001, 3.14, 0, -3.14/2], \
+                ["brickR2",0, 0.746, -0.192, -0.255, -0.0249590815779, 0.999649402929, 0.00737916180073, 0.00486450832011], \
+                ["brickRc4",1, 0.819, 0.01, -0.07632796, -0.0249590815779 , 0.999649402929, 0.00737916180073, 0.00486450832011], \
+                ["brickRc5",1, 0.819, -0.139, -0.07632796, 3.14, 0, 3.14/2], \
+                ["brickRc6",1, 0.587,-0.139, -0.07632796, 3.14, 0, 3.14/2], \
+                ["brickR7",0, 0.819, -0.111, -0.001, 3.14, 0, -3.14/2], \
                 ["brickR8",0, 0.597, -0.101, -0.001, 3.14, 0, -3.14/2], \
-                ["brickR9",0, 0.703, 0, 0.061‬, -0.0249590815779, 0.999649402929, 0.00737916180073, 0.00486450832011], \
-                ["brickR10",0, 0.703, -0.139‬, 0.061‬, -0.0249590815779, 0.999649402929, 0.00737916180073, 0.00486450832011] ]
+                ["brickR9",0, 0.703, 0, 0.061, -0.0249590815779, 0.999649402929, 0.00737916180073, 0.00486450832011], \
+                ["brickR10",0, 0.703, -0.139, 0.061, -0.0249590815779, 0.999649402929, 0.00737916180073, 0.00486450832011] ]
 
         for ri in range(len(rdata)):
             print("\nLoading ", rdata[ri][0], "...")
