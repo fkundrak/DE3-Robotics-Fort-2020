@@ -562,17 +562,9 @@ def main():
 
             if (ldata[li][1]==1):
                 load_lbrickv(ldata[li][0])
+
                 print("\nPicking ", ldata[li][0], "...")
                 left_pnp.move_to_position(left_pnp.ik_request(lstandby_pose))
-                
-                # Gripper Checking - learn more in the Wiki (Phase 5: Gripper Checking)
-                lgripping = False
-
-                while not lgripping:
-                    left_pnp.pick(lpick_poseL456) # Attempt to pick the brick
-                    print("\nFLOAT position", left_pnp.gripper_position())
-                    if left_pnp.gripper_position() > 20: # If the brick has been picked...
-                        lgripping = True # Break the loop
 
                 print("\nPlacing ", ldata[li][0], "...")
 
@@ -584,15 +576,6 @@ def main():
                 load_lbrick(ldata[li][0])
 
                 print("\nPicking ", ldata[li][0], "...")
-
-                # Gripper Checking
-                lgripping = False
-
-                while not lgripping:
-                    left_pnp.pick(lpick_pose1)
-                    print("\nFLOAT position", left_pnp.gripper_position())
-                    if left_pnp.gripper_position() > 20:
-                        lgripping = True
 
                 print("\nPlacing ", ldata[li][0], "...")
                 left_pnp.pick2(ltemp_pose)
@@ -637,15 +620,6 @@ def main():
                 print("\nPicking ", rdata[ri][0], "...")
                 right_pnp.move_to_position(right_pnp.ik_request(rstandby_pose))
 
-                # Gripper Checking
-                rgripping = False
-
-                while not rgripping:
-                    right_pnp.pick(rpick_poseR456)
-                    print("\nFLOAT position", right_pnp.gripper_position())
-                    if right_pnp.gripper_position() > 20:
-                        rgripping = True
-
                 print("\nPlacing ", rdata[ri][0], "...")
                 right_pnp.pick2(rctemp_pose)
 
@@ -653,15 +627,6 @@ def main():
 
                 load_rbrick(rdata[ri][0])
                 print("\nPicking ", rdata[ri][0], "...")
-
-                # Gripper Checking
-                rgripping = False
-
-                while not rgripping:
-                    right_pnp.pick(rpick_pose1)
-                    print("\nFLOAT position", right_pnp.gripper_position())
-                    if right_pnp.gripper_position() > 20:
-                        rgripping = True
 
                 print("\nPlacing ", rdata[ri][0], "...")
                 right_pnp.pick2(rtemp_pose)
