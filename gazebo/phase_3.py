@@ -651,7 +651,7 @@ def main():
                 rgripping = False
 
                 while not rgripping:
-                    right_pnp.pick(rpick_poseR456)
+                    right_pnp.pick(rpick_pose1)
                     print("\nFLOAT position", right_pnp.gripper_position())
                     if right_pnp.gripper_position() > 20:
                         rgripping = True
