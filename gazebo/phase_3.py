@@ -1,5 +1,7 @@
 """
 FORT : Building a Fort with DE NIRO Baxter Robot
+Phase 3 - Building A Fort In Gazebo Using Two Arms
+
 Modified from Baxter SDK example (https://sdk.rethinkrobotics.com/wiki/Home)
 
 Written by : Aisling Tai, Jingtong Ng, Rachel Brown
