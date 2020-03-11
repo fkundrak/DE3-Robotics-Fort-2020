@@ -379,7 +379,7 @@ def load_lbrickv(
 # (Phase 4: Building A Fort With Baxter Using Two Arms) -----
 class ArmThread(threading.Thread):
     def __init__(self, threadID, arm_name):
-        super().__init__() # Initialise threads
+        super(ArmThread, self).__init__() # Initialise threads
         # threading.Thread.__init__(self)
         self.threadID = threadID # Two threads will be running, IDs are 1 and 2
         self.arm_name = arm_name # One thread per arm
