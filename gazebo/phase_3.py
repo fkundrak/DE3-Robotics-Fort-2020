@@ -398,7 +398,7 @@ def main():
     global full_r
 
     rospy.init_node("ik_pick_and_place_demo") # Initialise node
-    delete_gazebo_models()
+    delete_gazebo_models() # Delete previously loaded models before executing
 
     hover_distance = 0.1 # In meters
     
@@ -520,7 +520,7 @@ def main():
                             0.00486450832011)
     #--------------------------------------------------------
 
-    os.system('rosrun baxter_tools tuck_arms.py -u')
+    os.system('rosrun baxter_tools tuck_arms.py -u') # Untuck DE NIRO's arms
 
     # Initialise pick and place
     left_pnp = PickAndPlace('left', hover_distance)
@@ -636,10 +636,12 @@ def main():
         right_pnp.move_to_start(right_pnp.ik_request(rstart_pose1))
     # -------------------------------------------------------
 
-    thread1 = ArmThread(1, "l") # Initialise threads
+    # Initialise threads
+    thread1 = ArmThread(1, "l")
     thread2 = ArmThread(2, "r")
 
-    thread1.start() # Start both threads
+    # Start both threads
+    thread1.start()
     thread2.start()
 
     print("\nFort Building Complete!")
