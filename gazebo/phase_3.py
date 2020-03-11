@@ -4,7 +4,7 @@ Modified from Baxter SDK example (https://sdk.rethinkrobotics.com/wiki/Home)
 
 Written by : Aisling Tai, Jingtong Ng, Rachel Brown
 Reviewed and commented by: Clara Arcos, Rachel Brown
-2020
+Last updated: 2020
 """
 
 import argparse
@@ -37,7 +37,7 @@ class PickAndPlace(object):
         ns = "ExternalTools/" + limb + "/PositionKinematicsNode/IKService"
         self._iksvc = rospy.ServiceProxy(ns, SolvePositionIK)
         rospy.wait_for_service(ns, 5.0)
-        # verify robot is enabled
+        # verify that robot is enabled
         print("Getting robot state... ")
         self._rs = baxter_interface.RobotEnable(baxter_interface.CHECK_VERSION)
         self._init_state = self._rs.state().enabled
@@ -110,14 +110,12 @@ class PickAndPlace(object):
     def gripper_missed(self):
         return self._gripper.missed()
 
-
     def gripper_position(self):
         return self._gripper.position()
 
     def gripper_gripping(self):
         self._gripper.set_moving_force(50.0)
         return self._gripper.gripping()
-
 
     def _approach(self, pose):
         approach = copy.deepcopy(pose)
@@ -166,7 +164,6 @@ class PickAndPlace(object):
         self._servo_to_pose(pose)
         print('moving')
 
-
     def place(self, pose):
         # servo above pose
         self._approach(pose)
@@ -178,7 +175,11 @@ class PickAndPlace(object):
         self._retract()
 
 
-def poseratioant(px,py,pz,roll, pitch, yaw):
+def poseratioant(px,py,pz,roll,pitch,yaw):
+    """
+    This function takes position and Euler angles and returns the pose
+    It's used for the bricks that need to be rotated
+    """
     quat = tf.transformations.quaternion_from_euler(roll, pitch, yaw)
     my_pose_msg = Pose()
     my_pose_msg.position.x = px
@@ -191,7 +192,13 @@ def poseratioant(px,py,pz,roll, pitch, yaw):
 
     return my_pose_msg
 
+
 def posedefined(px,py,pz,ox,oy,oz,ow):
+    """
+    This function taken position and quartenions and returns the pose
+    It's used for the bricks that don't need to be rotated, as poseratioant
+    was found to misbehave with these bricks
+    """
     my_pose_msg = Pose()
     my_pose_msg.position.x = px
     my_pose_msg.position.y = py
@@ -203,45 +210,14 @@ def posedefined(px,py,pz,ox,oy,oz,ow):
 
     return my_pose_msg
 
-def ratioant(roll, pitch, yaw):
-    quat = tf.transformations.quaternion_from_euler(roll, pitch, yaw)
-    my_pose_msg = Pose()
-    my_pose_msg.position.x = 0.547
-    my_pose_msg.position.y = 0.149
-    my_pose_msg.position.z = 0.32867204
-    my_pose_msg.orientation.x = quat[0]
-    my_pose_msg.orientation.y = quat[1]
-    my_pose_msg.orientation.z = quat[2]
-    my_pose_msg.orientation.w = quat[3]
 
-    print(my_pose_msg)
-
-def load_gazebo_models_brick_only(
-                       brick3_pose=Pose(position=Point(x=0.5897, y=0.7, z=0.82)),
-                       brick3_reference_frame="world"):
-
-    # Load brick sdf
-    brick3_xml = ''
-    with open ("models/brick/model.sdf", "r") as brick3_file:
-        brick3_xml=brick3_file.read().replace('\n', '')
-
-    # Spawn Brick sdf
-    rospy.wait_for_service('/gazebo/spawn_sdf_model')
-    try:
-        spawn_sdf = rospy.ServiceProxy('/gazebo/spawn_sdf_model', SpawnModel)
-        resp_sdf = spawn_sdf("brick3", brick3_xml, "/",
-                             brick3_pose, brick3_reference_frame)
-    except rospy.ServiceException, e:
-        rospy.logerr("Spawn SDF service call failed: {0}".format(e))
-
-
-
-def load_gazebo_models_table_only(table_pose=Pose(position=Point(x=0.8, y=0.0, z=0.0)),
-                       table_reference_frame="world",
-                       rtable_pose=Pose(position=Point(x=0.8, y=-0.875-0.2, z=0.0)),
-                       rtable_reference_frame="world",
-                       ltable_pose=Pose(position=Point(x=0.8, y=0.875+0.2, z=0.0)),
-                       ltable_reference_frame="world"):
+def load_gazebo_models_tables(
+        table_pose=Pose(position=Point(x=0.8, y=0.0, z=0.0)),
+        table_reference_frame="world",
+        rtable_pose=Pose(position=Point(x=0.8, y=-1.075‬, z=0.0)),
+        rtable_reference_frame="world",
+        ltable_pose=Pose(position=Point(x=0.8, y=1.075‬, z=0.0)),
+        ltable_reference_frame="world"):
     # Load Table SDF
     table_xml = ''
     with open ("models/cafe_table/model.sdf", "r") as table_file:
@@ -256,6 +232,7 @@ def load_gazebo_models_table_only(table_pose=Pose(position=Point(x=0.8, y=0.0, z
     except rospy.ServiceException, e:
         rospy.logerr("Spawn SDF service call failed: {0}".format(e))
 
+    # Load Table SDF
     ltable_xml = ''
     with open ("models/side_table/model.sdf", "r") as ltable_file:
         ltable_xml=ltable_file.read().replace('\n', '')
@@ -269,6 +246,7 @@ def load_gazebo_models_table_only(table_pose=Pose(position=Point(x=0.8, y=0.0, z
     except rospy.ServiceException, e:
         rospy.logerr("Spawn SDF service call failed: {0}".format(e))
 
+    # Load Table SDF
     rtable_xml = ''
     with open ("models/side_table/model.sdf", "r") as rtable_file:
         rtable_xml=rtable_file.read().replace('\n', '')
@@ -282,11 +260,12 @@ def load_gazebo_models_table_only(table_pose=Pose(position=Point(x=0.8, y=0.0, z
     except rospy.ServiceException, e:
         rospy.logerr("Spawn SDF service call failed: {0}".format(e))
 
+
 def delete_gazebo_models():
     try:
         delete_model = rospy.ServiceProxy('/gazebo/delete_model', DeleteModel)
 
-
+        # Base bricks
         resp_delete = delete_model("brickL1")
         resp_delete = delete_model("brickR1")
         resp_delete = delete_model("brickL2")
@@ -294,7 +273,7 @@ def delete_gazebo_models():
         resp_delete = delete_model("brickL3")
         resp_delete = delete_model("brickR3")
 
-
+        # Column bricks
         resp_delete = delete_model("brickRc4")
         resp_delete = delete_model("brickRc5")
         resp_delete = delete_model("brickRc6")
@@ -302,7 +281,7 @@ def delete_gazebo_models():
         resp_delete = delete_model("brickLc5")
         resp_delete = delete_model("brickLc6")
 
-        #######################################Top Bricks##############################
+        # Top bricks
         resp_delete = delete_model("brickL7")
         resp_delete = delete_model("brickR7")
         resp_delete = delete_model("brickL8")
@@ -312,6 +291,7 @@ def delete_gazebo_models():
         resp_delete = delete_model("brickL10")
         resp_delete = delete_model("brickR10")
 
+        # Tables
         resp_delete = delete_model("cafe_table")
         resp_delete = delete_model("ltable")
         resp_delete = delete_model("rtable")
@@ -319,14 +299,17 @@ def delete_gazebo_models():
     except rospy.ServiceException, e:
         rospy.loginfo("Delete Model service call failed: {0}".format(e))
 
-###### NEW CODE ######
 
-def load_rbrick(brickid,brick_pose=Pose(position=Point(x=0.5897, y=-0.7, z=0.82)),brick_reference_frame="world"):
-
+def load_rbrick(
+        brickid,
+        brick_pose=Pose(position=Point(x=0.5897, y=-0.7, z=0.82)),
+        brick_reference_frame="world"):
+    # Load Brick SDF
     brick_xml = ''
     with open ("models/brick/model.sdf", "r") as brick_file:
         brick_xml=brick_file.read().replace('\n', '')
-    # Spawn Table SDF
+
+    # Spawn Brick SDF
     rospy.wait_for_service('/gazebo/spawn_sdf_model')
     try:
         spawn_urdf = rospy.ServiceProxy('/gazebo/spawn_sdf_model', SpawnModel)
@@ -335,12 +318,17 @@ def load_rbrick(brickid,brick_pose=Pose(position=Point(x=0.5897, y=-0.7, z=0.82)
     except rospy.ServiceException, e:
         rospy.logerr("Spawn SDF service call failed: {0}".format(e))
 
-def load_lbrick(brickid,brick_pose=Pose(position=Point(x=0.5897, y=0.7, z=0.82)),brick_reference_frame="world"):
 
+def load_lbrick(
+        brickid,
+        brick_pose=Pose(position=Point(x=0.5897, y=0.7, z=0.82)),
+        brick_reference_frame="world"):
+    # Load Brick SDF
     brick_xml = ''
     with open ("models/brick/model.sdf", "r") as brick_file:
         brick_xml=brick_file.read().replace('\n', '')
-    # Spawn Table SDF
+
+    # Spawn Brick SDF
     rospy.wait_for_service('/gazebo/spawn_sdf_model')
     try:
         spawn_urdf = rospy.ServiceProxy('/gazebo/spawn_sdf_model', SpawnModel)
@@ -349,13 +337,17 @@ def load_lbrick(brickid,brick_pose=Pose(position=Point(x=0.5897, y=0.7, z=0.82))
     except rospy.ServiceException, e:
         rospy.logerr("Spawn SDF service call failed: {0}".format(e))
 
-def load_rbrickv(brickid,brick_pose=Pose(position=Point(x=0.5897,y= -0.7,z= 0.775+0.192/2)),brick_reference_frame="world"):
 
-
+def load_rbrickv(
+        brickid,
+        brick_pose=Pose(position=Point(x=0.5897,y= -0.7,z= 0.775+0.192/2)),
+        brick_reference_frame="world"):
+    # Load Vertical Brick SDF
     brick_xml = ''
     with open ("models/brickv/model.sdf", "r") as brick_file:
         brick_xml=brick_file.read().replace('\n', '')
-    # Spawn Table SDF
+
+    # Spawn Vertical Brick SDF
     rospy.wait_for_service('/gazebo/spawn_sdf_model')
     try:
         spawn_urdf = rospy.ServiceProxy('/gazebo/spawn_sdf_model', SpawnModel)
@@ -364,12 +356,17 @@ def load_rbrickv(brickid,brick_pose=Pose(position=Point(x=0.5897,y= -0.7,z= 0.77
     except rospy.ServiceException, e:
         rospy.logerr("Spawn SDF service call failed: {0}".format(e))
 
-def load_lbrickv(brickid,brick_pose=Pose(position=Point(x=0.5897,y= 0.7,z= 0.775+0.192/2)),brick_reference_frame="world"):
 
+def load_lbrickv(
+        brickid,
+        brick_pose=Pose(position=Point(x=0.5897,y= 0.7,z= 0.775+0.192/2)),
+        brick_reference_frame="world"):
+    # Load Vertical Brick SDF
     brick_xml = ''
     with open ("models/brickv/model.sdf", "r") as brick_file:
         brick_xml=brick_file.read().replace('\n', '')
-    # Spawn Table SDF
+
+    # Spawn Vertical Brick SDF
     rospy.wait_for_service('/gazebo/spawn_sdf_model')
     try:
         spawn_urdf = rospy.ServiceProxy('/gazebo/spawn_sdf_model', SpawnModel)
@@ -378,24 +375,23 @@ def load_lbrickv(brickid,brick_pose=Pose(position=Point(x=0.5897,y= 0.7,z= 0.775
     except rospy.ServiceException, e:
         rospy.logerr("Spawn SDF service call failed: {0}".format(e))
 
-
-
-class myThread (threading.Thread):
-
+# Threading For Usage of Both Arms - more details in Wiki ---
+# (Phase 4: Building A Fort With Baxter Using Two Arms) -----
+class ArmThread(threading.Thread):
     def __init__(self, threadID, arm_name):
-        super (myThread, self).__init__() #initialise threads
-        threading.Thread.__init__(self)
-        self.threadID = threadID #two threads will be running, IDs are 1 and 2
-        self.arm_name = arm_name #one thread per arm
+        super().__init__() # Initialise threads
+        # threading.Thread.__init__(self)
+        self.threadID = threadID # Two threads will be running, IDs are 1 and 2
+        self.arm_name = arm_name # One thread per arm
 
-    def run(self): #run both arms
+    def run(self): # Run both arms
         if self.arm_name == "l":
             full_l()
         if self.arm_name == "r":
             full_r()
         else:
             print("error")
-
+#------------------------------------------------------------
 
 
 def main():
@@ -403,12 +399,12 @@ def main():
     global full_l
     global full_r
 
-    """Simple pick and place example"""
-    rospy.init_node("ik_pick_and_place_demo")
+    rospy.init_node("ik_pick_and_place_demo") # Initialise node
     delete_gazebo_models()
 
-    hover_distance = 0.1 # meters
-    # Starting Pose for left arm round 1
+    hover_distance = 0.1 # In meters
+    
+    # Starting position -------------------------------------
     lstart_pose1 = Pose()
     lstart_pose1.position.x = 0.579679836383
     lstart_pose1.position.y = 0.3
@@ -418,7 +414,6 @@ def main():
     lstart_pose1.orientation.z = 0.00737916180073
     lstart_pose1.orientation.w = 0.00486450832011
 
-    # Starting Pose for right arm
     rstart_pose1 = Pose()
     rstart_pose1.position.x = 0.579679836383
     rstart_pose1.position.y = -0.3
@@ -427,9 +422,9 @@ def main():
     rstart_pose1.orientation.y = 0.999649402929
     rstart_pose1.orientation.z = -0.00737916180073
     rstart_pose1.orientation.w = 0.00486450832011
+    #--------------------------------------------------------
 
-    ################################################ Normal Brick Picking Position #####################################
-    # Picking pose left
+    # Horizontal Brick Picking Position ---------------------
     lpick_pose1 = Pose()
     lpick_pose1.position.x = 0.589679836383
     lpick_pose1.position.y = 0.7
@@ -439,7 +434,6 @@ def main():
     lpick_pose1.orientation.z = 0.00737916180073
     lpick_pose1.orientation.w = 0.00486450832011
 
-    # Picking pose right
     rpick_pose1 = Pose()
     rpick_pose1.position.x = 0.589679836383
     rpick_pose1.position.y = -0.7
@@ -448,7 +442,9 @@ def main():
     rpick_pose1.orientation.y = 0.999649402929
     rpick_pose1.orientation.z = 0.00737916180073
     rpick_pose1.orientation.w = 0.00486450832011
+    #--------------------------------------------------------
 
+    # Horizontal Brick Temporary Position -------------------
     ltemp_pose = Pose()
     ltemp_pose.position.x = 0.619679836383‬
     ltemp_pose.position.y = 0.15
@@ -466,8 +462,9 @@ def main():
     rtemp_pose.orientation.y = 0.999649402929
     rtemp_pose.orientation.z = 0.00737916180073
     rtemp_pose.orientation.w = 0.00486450832011
+    #--------------------------------------------------------
 
-
+    # Vertical Brick Temporary Position -------------------
     lctemp_pose = Pose()
     lctemp_pose.position.x = 0.629679836383
     lctemp_pose.position.y = 0.2
@@ -485,8 +482,9 @@ def main():
     rctemp_pose.orientation.y = 0.999649402929
     rctemp_pose.orientation.z = 0.00737916180073
     rctemp_pose.orientation.w = 0.00486450832011
+    #--------------------------------------------------------
 
-
+    # Standby Position --------------------------------------
     lstandby_pose = Pose()
     lstandby_pose.position.x = 0.639679836383‬
     lstandby_pose.position.y = 0.2
@@ -504,10 +502,9 @@ def main():
     rstandby_pose.orientation.y = 0.999649402929
     rstandby_pose.orientation.z = 0.00737916180073
     rstandby_pose.orientation.w = 0.00486450832011
+    #--------------------------------------------------------
 
-    # lstandby_pose = ltemp_pose
-
-    ################################################ Coloumns Picking Position ########################################
+    # Vertical Brick Picking Position -----------------------
     lpick_poseL456 = posedefined(  0.5897, \
                             0.7, \
                             0.1716, \
@@ -528,9 +525,8 @@ def main():
                             3.14, \
                             3.14,\
                             3.14/2)
+    #--------------------------------------------------------
 
-
-    ################################################ Base Code  ########################################
     os.system('rosrun baxter_tools tuck_arms.py -u')
 
     # Initialise pick and place
@@ -542,10 +538,10 @@ def main():
     right_pnp.move_to_start(right_pnp.ik_request(rstart_pose1))
 
     print("\nLoading Table...")
-    load_gazebo_models_table_only()
+    load_gazebo_models_tables()
 
-
-    def full_l ():
+    # Execute Left Arm --------------------------------------
+    def full_l():
         
         ldata = [   ["brickL2",0, 0.66,  0.212, -0.255, -0.0249590815779, 0.999649402929, 0.00737916180073, 0.00486450832011], \
                 ["brickL1",0, 0.809, 0.169, -0.255, 3.14, 0, 3.14/2], \
@@ -558,24 +554,23 @@ def main():
                 ["brickL9",0, 0.703‬, 0.159, 0.061, -0.0249590815779, 0.999649402929, 0.00737916180073, 0.00486450832011] ]
 
         for li in range(len(ldata)):
-            print "\nLoading ", ldata[li][0], "..."
-
+            print("\nLoading ", ldata[li][0], "...")
 
             if (ldata[li][1]==1):
                 load_lbrickv(ldata[li][0])
-                print "\nPicking ", ldata[li][0], "..."
+                print("\nPicking ", ldata[li][0], "...")
                 left_pnp.move_to_position(left_pnp.ik_request(lstandby_pose))
+                
+                # Gripper Checking - learn more in the Wiki (Phase 5: Gripper Checking)
+                lgripping = False
 
-                lgripping = 0 # Set gripping index to 0
+                while not lgripping:
+                    left_pnp.pick(lpick_poseL456) # Attempt to pick the brick
+                    print("\nFLOAT position", left_pnp.gripper_position())
+                    if left_pnp.gripper_position() > 20: # If the brick has been picked...
+                        lgripping = True # Break the loop
 
-                while lgripping == 0 : # While gripping index is 0...
-                    left_pnp.pick(lpick_poseL456) # ...attempt to pick the brick
-                    print "\nFLOAT position", left_pnp.gripper_position()
-                    if left_pnp.gripper_position() > 20: # If distance between fingers is more than 20 (the brick has been picked)...
-                        lgripping = 1 # ...set gripping index to 0, breaking the loop
-
-
-                print "\nPlacing ", ldata[li][0], "..."
+                print("\nPlacing ", ldata[li][0], "...")
 
                 if (ldata[li][0] == 9):
                     left_pnp.pick2(lstart_pose1)
@@ -584,32 +579,33 @@ def main():
             else:
                 load_lbrick(ldata[li][0])
 
+                print("\nPicking ", ldata[li][0], "...")
 
-                print "\nPicking ", ldata[li][0], "..."
-                lgripping = 0
+                # Gripper Checking
+                lgripping = False
 
-                while lgripping == 0 :
+                while not lgripping:
                     left_pnp.pick(lpick_pose1)
-                    print "\nFLOAT position", left_pnp.gripper_position()
+                    print("\nFLOAT position", left_pnp.gripper_position())
                     if left_pnp.gripper_position() > 20:
-                        lgripping = 1
+                        lgripping = True
 
-                print "\nPlacing ", ldata[li][0], "..."
+                print("\nPlacing ", ldata[li][0], "...")
                 left_pnp.pick2(ltemp_pose)
 
             if len(ldata[li])==8:
-                print "\nrationant "
+                print("\nrationant ")
                 lplace_pose = poseratioant(ldata[li][2],ldata[li][3]-.01,ldata[li][4]-0.01,ldata[li][5],ldata[li][6],ldata[li][7])
             else:
-                print "\ndefined "
+                print("\ndefined ")
                 lplace_pose = posedefined(ldata[li][2],ldata[li][3]-.01,ldata[li][4]-0.01,ldata[li][5],ldata[li][6],ldata[li][7],ldata[li][8])
 
             left_pnp.place(lplace_pose)
             left_pnp.move_to_position(left_pnp.ik_request(ltemp_pose))
         left_pnp.move_to_start(left_pnp.ik_request(lstart_pose1))
+    # -------------------------------------------------------
 
-
-#####################RIGHT##################################
+    # Execute Right Arm -------------------------------------
     def full_r ():
         time.sleep(15)
 
@@ -624,62 +620,63 @@ def main():
                 ["brickR9",0, 0.703, 0, 0.061‬, -0.0249590815779, 0.999649402929, 0.00737916180073, 0.00486450832011], \
                 ["brickR10",0, 0.703, -0.139‬, 0.061‬, -0.0249590815779, 0.999649402929, 0.00737916180073, 0.00486450832011] ]
 
-
         for ri in range(len(rdata)):
-            print "\nLoading ", rdata[ri][0], "..."
+            print("\nLoading ", rdata[ri][0], "...")
 
             if (rdata[ri][1]==1):
 
                 load_rbrickv(rdata[ri][0])
 
-                print "\nPicking ", rdata[ri][0], "..."
+                print("\nPicking ", rdata[ri][0], "...")
                 right_pnp.move_to_position(right_pnp.ik_request(rstandby_pose))
 
-                rgripping = 0
+                # Gripper Checking
+                rgripping = False
 
-                while rgripping == 0 :
+                while not rgripping:
                     right_pnp.pick(rpick_poseR456)
-                    print "\nFLOAT position", right_pnp.gripper_position()
+                    print("\nFLOAT position", right_pnp.gripper_position())
                     if right_pnp.gripper_position() > 20:
-                        rgripping = 1
+                        rgripping = True
 
-                print "\nPlacing ", rdata[ri][0], "..."
+                print("\nPlacing ", rdata[ri][0], "...")
                 right_pnp.pick2(rctemp_pose)
 
             else:
 
                 load_rbrick(rdata[ri][0])
-                print "\nPicking ", rdata[ri][0], "..."
-                rgripping = 0
+                print("\nPicking ", rdata[ri][0], "...")
 
-                while rgripping == 0 :
-                    right_pnp.pick(rpick_pose1)
-                    print "\nFLOAT position", right_pnp.gripper_position()
+                # Gripper Checking
+                rgripping = False
+
+                while not rgripping:
+                    right_pnp.pick(rpick_poseR456)
+                    print("\nFLOAT position", right_pnp.gripper_position())
                     if right_pnp.gripper_position() > 20:
-                        rgripping = 1
+                        rgripping = True
 
-                print "\nPlacing ", rdata[ri][0], "..."
+                print("\nPlacing ", rdata[ri][0], "...")
                 right_pnp.pick2(rtemp_pose)
 
             if len(rdata[ri])==8:
-                print "\nrationant "
+                print("\nrationant ")
                 rplace_pose = poseratioant(rdata[ri][2],rdata[ri][3]-.01,rdata[ri][4]-0.01,rdata[ri][5],rdata[ri][6],rdata[ri][7])
             else:
-                print "\ndefined "
+                print("\ndefined ")
                 rplace_pose = posedefined(rdata[ri][2],rdata[ri][3]-.01,rdata[ri][4]-0.01,rdata[ri][5],rdata[ri][6],rdata[ri][7],rdata[ri][8])
 
             right_pnp.place(rplace_pose)
             right_pnp.move_to_position(right_pnp.ik_request(rtemp_pose))
 
         right_pnp.move_to_start(right_pnp.ik_request(rstart_pose1))
+    # -------------------------------------------------------
 
-    thread1 = myThread(1, "l") # initialise threads
-    thread2 = myThread(2, "r")
+    thread1 = ArmThread(1, "l") # Initialise threads
+    thread2 = ArmThread(2, "r")
 
-    thread1.start() # start both threads
+    thread1.start() # Start both threads
     thread2.start()
-
-    ############################################ End code stuff #########################
 
     print("\nFort Building Complete!")
 
@@ -687,10 +684,9 @@ def main():
 
     rospy.on_shutdown(delete_gazebo_models)
 
-if __name__ == '__main__':
 
+if __name__ == '__main__':
     try:
         main()
-
     except KeyboardInterrupt:
         rospy.on_shutdown(delete_gazebo_models)
