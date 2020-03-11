@@ -1,6 +1,6 @@
 """
 FORT : Building a Fort with DE NIRO Baxter Robot
-Phase 5 - Building A Fort With Baxter Using Two Arms
+Phase 4 - Building A Fort With Baxter Using Two Arms
 
 Modified from Baxter SDK example (https://sdk.rethinkrobotics.com/wiki/Home)
 
