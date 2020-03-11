@@ -108,16 +108,6 @@ class PickAndPlace(object):
         self._gripper.close()
         rospy.sleep(1.0)
 
-    def gripper_missed(self):
-        return self._gripper.missed()
-
-    def gripper_position(self):
-        return self._gripper.position()
-
-    def gripper_gripping(self):
-        self._gripper.set_moving_force(50.0)
-        return self._gripper.gripping()
-
     def _approach(self, pose):
         approach = copy.deepcopy(pose)
         # approach with a pose the hover-distance above the requested pose
