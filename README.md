@@ -55,3 +55,9 @@ Jingtong Ng \
 Aisling Tai
 
 ## Bibliography
+
+[ROS Tutorials](http://wiki.ros.org/ROS/Tutorials)
+
+[Threading for dual arm code](https://docs.python.org/3/library/threading.html?fbclid=IwAR1pBbcPZMjFRYkg6HrE1QMIg6f7A2EGFoZdYQZVu92KJhTbCWRNsuXoxuQ)
+
+[Image Analysis](https://github.com/markwsilliman/turtlebot/?fbclid=IwAR0zSSLM2sWcnu8strsbx0Bax4x1TgKSRYfSrKhHOVVs8NqctAYDL-dBrkE)
