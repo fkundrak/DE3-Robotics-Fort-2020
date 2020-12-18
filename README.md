@@ -48,7 +48,7 @@ Our team decided to build a fort using DE NIRO, and we split this project into t
 
 ## The Team
 
-Clara Arcos \
+Kai Arcos \
 Rachel Brown \
 Franciska Kundrak \
 Jingtong Ng \
